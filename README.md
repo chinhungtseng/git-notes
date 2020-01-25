@@ -1,5 +1,13 @@
 # git-notes
 
+## 參考書籍
+* [為自己學 git](https://gitbook.tw)
+* [pro git 2](https://github.com/progit/progit2)
+
+## 什麼是 git
+* `git` 是開源的分散式版本控制系統
+* `github` 為共同協作的一個平台(商業網站)，本體為 `git server`
+
 ## 安裝 git
 * macOS
 ```
@@ -78,7 +86,16 @@ $ git add <file>
 ```
 $ git add --all
 ```
-
+* 加入空資料夾
+先在資料夾中新增任ㄧ空檔案，ex:> `.gitkeep`
+```
+$ touch <empty_dir>/.gitkeep
+$ git add <empty_dir>/.gitkeep
+```
+* 只選擇部分區塊
+```
+$ git add -p <file>
+```
 ## 將暫存區(staged)內容提交到 git 倉庫
 ```
 $ git commit -m "<your-commit-message>"
@@ -112,22 +129,33 @@ $ git rm --cached <file>
 $ git mv <file_from> <file_to>
 ```
 
-## 檢視紀錄
+## 檢視 commit 紀錄
 ```
 $ git log
 ```
-* 其他參數
-  * `-p` 
-  * `--stat`
-  * `--shortstat`
-  * `--name-only`
-  * `--name-status`
-  * `abbrev-commit`
-  * `--relative-date`
-  * `--graph`
-  * `--pretty` 
-  * `--oneline` same as `--pretty=oneline --abbrev-commit`
-
+* 檢視特定檔案
+```
+$ git log <file>
+```
+* 檢視特定檔案每次 commit 做過的修改
+```
+$ git log -p <file>
+$ git show <file/commit>
+```
+* 檢視每次 commit 新刪修的數量
+```
+$ git log --stat
+```
+* 以特定的格式呈現
+```
+$ git log --pretty=format
+$ git log --color --graph --pretty=format:'%C(bold white)%h%Creset -%C(bold green)%d%Creset %s %C(bold green)(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+```
+* 以圖形方式呈現
+```
+$ git log --oneline --graph
+$ git log --pretty=oneline --abbrev-commit --graph
+```
 * 尋找特定日期範圍
 ```
 $ git log --since=<datetime> --until=<datetime> 
@@ -146,6 +174,10 @@ $ git log --grep=<word>
 $ git log --auther=<name>
 $ git log --committer=<name>
 ```
+* reference logs
+```
+$ git log
+```
 
 ## 修改 commit 紀錄
 * 修改最近一次 commit 訊息
@@ -156,14 +188,99 @@ $ git commit --amend -m "<commit-message>"
 ```
 git rebase -i <commit-to>
 ```
+* 追加檔案到最近一次 commit，不修改 commit 訊息
+```
+$ git commit -a --amend --no-edit
+```
+* 追加檔案到最近一次 commit，修改 commit 訊息
+```
+$ git commit -a --amend -m "<new-commit-message>"
+```
 
+## 忽略檔案規則
+* 專案目錄中建立`.gitignore`檔案，將要忽略檔案名稱寫入`.gitignore`檔案中
+```
+$ touch .gitignore
+```
+* 無視`.gitignore`規則
+```
+$ git add -f <file>
+```
+* `.gitignore`的規則只對建立後的檔案有效，如要套用規則，需使用`git rm --cached`將檔案逐一移出追蹤，或使用`git clean -fx`全部清除在規則內被忽略的檔案
 
+## 取消修改被修改檔案
+將暫存區的檔案拉回(覆蓋)工作目錄的檔案
+```
+$ git checkout -- <file>
+```
+> git checkout <branch> 後面接分支為切換分支
 
+## 重做 commit 
+* 直接選取 commit
+```
+$ git reset <commit>
+```
+* 使用相對方式
+回到距離 HEAD 前3個 commit 的位置
+```
+$ git reset HEAD~3 <commit>
+$ git reset HEAD^^^ <commit>
+```
+> ^n 為第個順位的 parent commit 
 
+* reset 主要有3種模式：`--mixed`、`--soft`和`--hard`，`--mixed`為預設模式
 
+| 模式              | mixed mode   | soft mode  | hard mode |
+| ----------------- | ------------ | ---------- | --------- |
+| 工作目錄          | 不變         | 不變       | 丟掉      |
+| 暫存區            | 丟掉         | 不變       | 丟掉      |
+| commit 拆出來檔案 | 丟回工作目錄 | 丟回暫存區 | 直接丟掉  | 
 
+* 另一種重做方式，較 `reset` 保險，因會新增一個 commit q代表回復的狀態
+```
+$ git revert <commit>
+```
 
+## 查看 git 物件
+* 查看類型
+```
+$ git cat-file -t <object hash>
+```
+* 查看內容
+```
+$ git cat-file -p <object hash>
+```
 
+## 分支
+* 查看分支狀態
+```
+$ git branch
+```
+* 建立分支
+```
+$ git branch <branch-name>
+```
+* 刪除分支
+```
+$ git branch -d <branch-name>
+$ git branch -D <branch-name> #force delete
+```
+* 變更分支名稱
+```
+$ git branch -m <branch-name>
+```
+* 切換分支
+```
+$ git checkout <branch-name>
+```
+* 切換分支時如無分支就建立該分支
+```
+$ git checkout -b <branch-name>
+```
+* 合併分支
+```
+$ git merge <branch>
+```
 
 
 
