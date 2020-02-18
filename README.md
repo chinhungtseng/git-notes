@@ -108,7 +108,10 @@ $ git commit --allow-empty -m "<commit-message>"
 ```
 $ git commit -a -m "<commit-message>"
 ```
-
+* GPG-sign commits
+```
+$ git commit -S [<keyid>] -m "<commit-message>"
+```
 ## 刪除檔案
 * 直接刪除
 ```
@@ -307,7 +310,7 @@ $ git cherry-pick <commit>
 ```
 
 ## 標籤(tag)
-查看標籤
+* 查看標籤
 ```
 $ git tag [<tag-name>]
 ```
