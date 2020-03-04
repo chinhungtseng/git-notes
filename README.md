@@ -1,5 +1,30 @@
 # git-notes
 
+**Table of Contents**
+
+- [參考書籍(reference)](#參考書籍\(reference\))
+- [什麼是 git](#什麼是-git)
+- [安裝 git (install git)](#安裝-git-\(install git\))
+- [git 設定檔 (configuration)](#git-設定檔-\(configuration\))
+- [新增 git repositories](#新增-git-repositories)
+- [Recording Changes to the Repository](#recording-changes-to-the-repository)
+- [將檔案從工作目錄加入 git (staged)](#將檔案從工作目錄加入-git-\(staged\))
+- [將暫存區(staged)內容提交到 git 倉庫](#將暫存區\(staged\)內容提交到-git-倉庫)
+- [刪除檔案](#刪除檔案)
+- [變更檔名](#變更檔名)
+- [檢視 commit 紀錄](#檢視-commit-紀錄)
+- [修改 commit 紀錄](#修改-commit-紀錄)
+- [忽略檔案規則(ignore specified files)](#忽略檔案規則\(ignore-specified-files\))
+- [取消修改被修改檔案](#取消修改被修改檔案)
+- [重做 commit](#重做-commit)
+- [查看 git 物件(object)](#查看-git-物件\(object\))
+- [分支(branch)操作](#分支\(branch\)操作)
+- [標籤(tag)](#標籤\(tag\))
+- [儲存目前工作狀態](#儲存目前工作狀態)
+- [將檔案從 git 真正移除](#將檔案從-git-真正移除)
+- [遠端操作(remote)](#遠端操作\(remote\))
+- [使用 github 製作靜態網頁](#使用-github-製作靜態網頁)
+
 ## 參考書籍(reference)
 * [為自己學 git](https://gitbook.tw)
 * [pro git 2](https://github.com/progit/progit2)
