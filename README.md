@@ -2,30 +2,31 @@
 
 **Table of Contents**
 
-- [參考書籍(reference)](#參考書籍\(reference\))
+- [參考書籍(reference)](#參考書籍-reference)
 - [什麼是 git](#什麼是-git)
-- [安裝 git (install git)](#安裝-git-\(install git\))
-- [git 設定檔 (configuration)](#git-設定檔-\(configuration\))
+- [安裝 git (install git)](#安裝-git-install-git)
+- [git 設定檔 (configuration)](#git-設定檔-configuration)
 - [新增 git repositories](#新增-git-repositories)
 - [Recording Changes to the Repository](#recording-changes-to-the-repository)
-- [將檔案從工作目錄加入 git (staged)](#將檔案從工作目錄加入-git-\(staged\))
-- [將暫存區(staged)內容提交到 git 倉庫](#將暫存區\(staged\)內容提交到-git-倉庫)
+- [將檔案從工作目錄加入 git (staged)](#將檔案從工作目錄加入-git-staged)
+- [將暫存區(staged)內容提交到 git 倉庫](#將暫存區-staged-內容提交到-git-倉庫)
 - [刪除檔案](#刪除檔案)
 - [變更檔名](#變更檔名)
 - [檢視 commit 紀錄](#檢視-commit-紀錄)
 - [修改 commit 紀錄](#修改-commit-紀錄)
-- [忽略檔案規則(ignore specified files)](#忽略檔案規則\(ignore-specified-files\))
+- [忽略檔案規則(ignore specified files)](#忽略檔案規則-ignore-specified-files)
 - [取消修改被修改檔案](#取消修改被修改檔案)
 - [重做 commit](#重做-commit)
-- [查看 git 物件(object)](#查看-git-物件\(object\))
-- [分支(branch)操作](#分支\(branch\)操作)
-- [標籤(tag)](#標籤\(tag\))
+- [查看 git 物件(object)](#查看-git-物件-object)
+- [分支(branch)操作](#分支-branch-操作)
+- [標籤(tag)](#標籤-tag)
 - [儲存目前工作狀態](#儲存目前工作狀態)
 - [將檔案從 git 真正移除](#將檔案從-git-真正移除)
-- [遠端操作(remote)](#遠端操作\(remote\))
+- [遠端操作(remote)](#遠端操作-remote)
 - [使用 github 製作靜態網頁](#使用-github-製作靜態網頁)
+- [製作用 email 傳送的更新檔(patch)](#製作用-email-傳送的更新檔-patch)
 
-## 參考書籍(reference)
+## 參考書籍 reference
 * [為自己學 git](https://gitbook.tw)
 * [pro git 2](https://github.com/progit/progit2)
 
@@ -33,7 +34,7 @@
 * `git` 是開源的分散式版本控制系統
 * `github` 為共同協作的一個平台(商業網站)，本體為 `git server`
 
-## 安裝 git (install git)
+## 安裝 git install git
 * macOS
 ```
 $ brew install git
@@ -43,7 +44,7 @@ $ brew install git
 $ sudo yum install git
 ```
 
-## git 設定檔 (configuration)
+## git 設定檔 configuration
 * 全域設定，使用 `--global`
 ```
 $ git config --global user.name <user-name>
@@ -102,7 +103,7 @@ $ git status
 $ git status -s
 ```
 
-## 將檔案從工作目錄加入 git (staged)
+## 將檔案從工作目錄加入 git staged
 * 單一檔案
 ```
 $ git add <file>
@@ -121,7 +122,7 @@ $ git add <empty_dir>/.gitkeep
 ```
 $ git add -p <file>
 ```
-## 將暫存區(staged)內容提交到 git 倉庫
+## 將暫存區 staged 內容提交到 git 倉庫
 ```
 $ git commit -m "<your-commit-message>"
 ```
@@ -225,7 +226,7 @@ $ git commit -a --amend --no-edit
 $ git commit -a --amend -m "<new-commit-message>"
 ```
 
-## 忽略檔案規則(ignore specified files)
+## 忽略檔案規則 ignore specified files
 * 專案目錄中建立`.gitignore`檔案，將要忽略檔案名稱寫入`.gitignore`檔案中
 ```
 $ touch .gitignore
@@ -277,7 +278,7 @@ $ git revert --no-edit <commit>
 | git rebase  | Yes (較不適合 push 過的 commit) | 自由度最高的修改方式 |
 
 
-## 查看 git 物件(object)
+## 查看 git 物件 object
 * 查看類型
 ```
 $ git cat-file -t <object hash>
@@ -287,7 +288,7 @@ $ git cat-file -t <object hash>
 $ git cat-file -p <object hash>
 ```
 
-## 分支(branch)操作
+## 分支 branch 操作
 
 > 分支為指向某個 commit 的指標
 
@@ -334,7 +335,7 @@ $ git reset ORIG_HEAD --hard
 $ git cherry-pick <commit>
 ```
 
-## 標籤(tag)
+## 標籤 tag
 * 查看標籤
 ```
 $ git tag [<tag-name>]
@@ -378,7 +379,7 @@ $ git stash apply stash@{<stash index>}
 $ git stash drop stash@{<stash index>}
 ```
 
-## 將檔案從 `git` 真正移除
+## 將檔案從 git 真正移除
 1) 移除特定檔案
 ```
 $ git filter--branch -f --tree-filter "rm -f <file-name>"
@@ -396,7 +397,7 @@ $ git reflog expire --all --expire=now
 $ git gc --prune=now
 ```
 
-## 遠端操作(remote)
+## 遠端操作 remote
 * 設定遠端 server 節點
 ```
 $ git remote add <name> <url>
@@ -454,10 +455,10 @@ $ git clone <repository>
 $ git clone <repository> <name>
 ```
 
-## 使用 `github` 製作靜態網頁
+## 使用 github 製作靜態網頁
 * 將資料堆到名為`gh-pages`分支
 
-## 製作用 email 傳送的更新檔(patch)
+## 製作用 email 傳送的更新檔 patch
 * 製作最新 k 次 commit 的更新檔
 ```
 $ git format-patch -k -o <dir-name>
