@@ -382,7 +382,7 @@ $ git stash drop stash@{<stash index>}
 ## 將檔案從 git 真正移除
 1) 移除特定檔案
 ```
-$ git filter--branch -f --tree-filter "rm -f <file-name>"
+$ git filter-branch -f --tree-filter "rm -f <file-name>"
 ```
 2) 刪除備份點
 ```
